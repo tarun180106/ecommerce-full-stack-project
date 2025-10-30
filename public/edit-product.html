@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Product</title>
+    <link rel="stylesheet" href="styles.css">
+    </head>
+<body>
+    <nav class="navbar">
+        </nav>
+    <div class="container">
+        <h1>Edit Product</h1>
+        <form id="edit-product-form">
+            <div class="form-group">
+                <label for="name">Product Name</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Short Description</label>
+                <input type="text" id="description">
+            </div>
+             <div class="form-group">
+                <label for="detailed_description">Detailed Description</label>
+                <textarea id="detailed_description" rows="5"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="mrp">Price (MRP)</label>
+                <input type="number" id="mrp" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="image_url">Image URL</label>
+                <input type="text" id="image_url">
+            </div>
+            <div class="form-group">
+                <label for="quantity">Stock Quantity</label>
+                <input type="number" id="quantity" min="0" required> 
+            </div>
+            <button type="submit">Update Product</button>
+        </form>
+    </div>
+    <script src="edit-product.js"></script>
+</body>
+</html>

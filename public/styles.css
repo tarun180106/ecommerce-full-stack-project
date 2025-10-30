@@ -1,0 +1,1595 @@
+/* ==========================================================================
+   FINAL ORGANIZED E-COMMERCE STYLESHEET
+   ========================================================================== */
+
+/* 1. Global Styles & Variables */
+
+:root {
+    --primary-color: #8B7AB8;       /* Soft purple for buttons/accents */
+    --secondary-color: #F5F3F7;     /* Very light lavender background */
+    
+    /* --- Modern Pastel Color Palette --- */
+    --pastel-purple: #C5ADC5;       /* Pastel purple */
+    --light-steel-blue: #B2B5E0;    /* Light steel blue */
+    --soft-lavender: #E8DFF5;       /* Soft lavender for cards */
+    --pale-blue: #D4D9F5;           /* Pale blue accent */
+    --dark-color: #4A4A4A;
+    --light-color: #F8F8F8;
+    --success-color: #7CB342;
+    --danger-color: #E57373;
+    --border-color: #E0D5E8;
+    --grey-color: #6c757d;
+    --shadow: 0 4px 15px rgba(139, 122, 184, 0.15);
+}
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--secondary-color);
+    margin: 0;
+    padding: 0;
+    color: var(--dark-color);
+    line-height: 1.6;
+}
+h1, h2, h3 {
+    color: var(--dark-color);
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+/* 2. Reusable Components */
+
+/* --- Navigation Bar --- */
+.navbar {
+    background-color: var(--light-color);
+    padding: 1rem 0;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.nav-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+.nav-menu {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    gap: 1.5rem;
+}
+.nav-link {
+    color: var(--dark-color);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+.nav-link:hover {
+    color: var(--primary-color);
+}
+.nav-button {
+    background: none;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+.nav-button:hover {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+}
+
+/* --- Main Containers --- */
+.container, .shop-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: var(--light-color);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+/* --- Buttons --- */
+button {
+    padding: 12px;
+    border: none;
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+button:hover {
+    background-color: #7A6BA0;
+}
+
+/* 3. Page-Specific Styles */
+
+/* --- Login & Signup Pages --- */
+.centered-form-page {
+    /* Background properties now live here */
+    background-image: url('https://images.pexels.com/photos/3944405/pexels-photo-3944405.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    background-size: cover;
+    background-position: center;
+    
+    /* Centering properties */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.centered-form-page .container {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(8px);
+    max-width: 400px;   /* Reduced from 450px */
+    padding: 2.5rem;    /* Reduced from 3rem */
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(139, 122, 184, 0.25);
+    text-align: center;
+    border: 1px solid var(--border-color);
+}
+.centered-form-page .container form button {
+    width: 100%;
+}
+.form-logo {
+    width: 180px;
+    margin-bottom: 1.5rem;
+}
+
+/* --- Home Page (Hero Banner) --- */
+.hero {
+    position: relative;
+    height: 60vh;
+    background-image: url('https://images.pexels.com/photos/39284/macbook-apple-imac-computer-39284.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+.hero::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.hero-content {
+    position: relative; z-index: 2;
+}
+.hero h1 {
+    font-size: 3.5rem; margin-bottom: 1rem; color: white;
+}
+.hero-button {
+    background-color: var(--primary-color);
+    color: white; padding: 15px 30px;
+    text-decoration: none; border-radius: 8px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+.hero-button:hover {
+    background-color: #7A6BA0;
+}
+
+/* --- Products Page (Shop) --- */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+}
+.product-card-link {
+    text-decoration: none; color: inherit;
+}
+.product-card {
+    background: var(--light-color);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%; /* Ensures card fills the height of the grid row */
+    box-sizing: border-box; /* Includes padding in the height calculation */
+    
+    /* This sets up the flexible interior */
+    display: flex;
+    flex-direction: column;
+}
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(139, 122, 184, 0.2);
+}
+.product-card-image {
+    width: 100%; height: 200px;
+    object-fit: cover; border-radius: 8px;
+    margin-bottom: 1rem;
+}
+.product-card-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+}
+.wishlist-btn {
+    background: none; border: none; font-size: 1.5rem;
+    cursor: pointer; padding: 0; color: #ccc;
+    transition: color 0.3s ease; width: auto;
+}
+.wishlist-btn:hover {
+    color: var(--danger-color);
+}
+.product-card h3 {
+    margin: 0.5rem 0;
+}
+.product-card .price {
+    font-size: 1.3rem; font-weight: 700;
+    color: var(--primary-color); margin-bottom: 1rem;
+}
+.product-card p {
+    flex-grow: 1; /* This is the magic part: it makes the description expand */
+    color: #6B6B6B;
+    margin: 0.5rem 0 1.5rem 0;
+}
+.product-card button {
+    width: 100%;
+}
+
+/* --- Product Detail Page --- */
+.product-detail-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 3rem; align-items: flex-start; text-align: left;
+}
+.product-detail-image {
+    width: 100%; border-radius: 12px; box-shadow: var(--shadow);
+}
+.detail-price {
+    font-size: 2rem; margin-bottom: 1.5rem; font-weight: 700;
+}
+.product-detail-description {
+    line-height: 1.8; margin-bottom: 2rem;
+}
+.detail-add-to-cart-btn {
+    width: auto; padding: 12px 25px;
+}
+
+/* --- Cart & Wishlist Empty States --- */
+/* Empty State Styles */
+.empty-state {
+    /* Use flexbox to handle internal centering */
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    justify-content: center; /* Center items vertically */
+    align-items: center; /* Center items horizontally */
+    
+    /* Set a minimum height for the container to take up space */
+    min-height: 50vh; 
+    
+    text-align: center;
+    padding: 2rem;
+}
+.empty-state-icon {
+    width: 80px; height: 80px; color: #ccc; margin-bottom: 1.5rem;
+}
+.empty-state h3 {
+    font-size: 1.5rem; color: #555; margin-bottom: 1rem;
+}
+.empty-state .nav-button {
+    display: inline-block; width: auto; text-decoration: none;
+    background-color: var(--primary-color); color: white;
+}
+
+/* Styles for Input Icons and Underline Inputs */
+.input-group {
+    position: relative;
+    margin-bottom: 2rem; /* More space between inputs */
+}
+
+.input-group i {
+    position: absolute;
+    left: 0; /* Align icon to the far left */
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    transition: color 0.3s ease;
+}
+
+.input-group input {
+    /* Remove the boxy style */
+    border: none;
+    border-bottom: 2px solid #D0D0D0; /* Add the underline */
+    border-radius: 0; /* Remove rounded corners */
+    background-color: transparent;
+
+    width: 100%;
+    padding: 10px 10px 10px 25px; /* Adjust padding for icon */
+    font-size: 1rem;
+    color: var(--dark-color);
+    transition: border-color 0.3s ease;
+}
+
+/* When the input is focused (clicked on) */
+.input-group input:focus {
+    outline: none;
+    border-bottom-color: var(--primary-color); /* Underline changes color */
+}
+
+.input-group input:focus + i {
+    color: var(--primary-color); /* Icon changes color with the line */
+}
+/* New Product Detail Page Styles */
+.product-page-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr; /* 3 columns: Image, Info, Action Box */
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.product-info-container h1 {
+    text-align: left;
+    margin-top: 0;
+}
+
+.product-info-container hr {
+    border: 0;
+    border-top: 1px solid var(--border-color);
+    margin: 1.5rem 0;
+}
+
+.product-info-container ul {
+    list-style-position: inside;
+    padding-left: 0;
+    line-height: 1.8;
+}
+
+.product-action-box {
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    background-color: var(--soft-lavender);
+}
+
+.stock-status {
+    color: var(--success-color);
+    font-weight: 500;
+    margin-top: 0;
+}
+
+.buy-now-btn {
+    background-color: #FFA726; /* Warm orange */
+    margin-top: 1rem;
+}
+.buy-now-btn:hover {
+    background-color: #FB8C00;
+}
+
+.product-long-description {
+    margin-top: 4rem;
+    border-top: 1px solid var(--border-color);
+    padding-top: 2rem;
+    text-align: left;
+}
+/* New Review Section Styles */
+.reviews-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 3rem;
+    align-items: flex-start;
+}
+
+#review-form-container h2,
+#reviews-container h2 {
+    text-align: left;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 1rem;
+    margin-top: 0;
+    margin-bottom: 2rem;
+}
+
+/* Form Group Layout */
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+    color: var(--dark-color);
+}
+
+/* Interactive Star Rating Styles */
+.star-rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+.star-rating input {
+    display: none;
+}
+.star-rating label {
+    font-size: 2rem;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+/* This handles the hover and checked states */
+.star-rating input:checked ~ label,
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    color: #FFB74D;
+}
+
+
+#review-form-container button {
+    background-color: var(--success-color);
+    width: auto; /* Allow the button to size to its content */
+    padding: 12px 25px;
+    font-size: 1rem;
+}
+
+#review-form-container button:hover {
+    background-color: #689F38; /* A darker green */
+}
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    box-sizing: border-box; /* Ensures padding is consistent */
+    resize: vertical; /* Allows vertical resizing, but not horizontal */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Add a focus style to match other inputs */
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(139, 122, 184, 0.2);
+}
+
+/* New Cart Page Layout Styles */
+.cart-layout {
+    display: grid;
+    /* Use one full column when empty, ensuring the space is centered */
+    grid-template-columns: 1fr; 
+    gap: 2rem;
+    align-items: center; /* Vertically align items in the grid */
+    
+    /* CRITICAL: Ensure the layout takes up maximum height when content is sparse */
+    min-height: 70vh; 
+}
+
+/* Add a style to override the grid when the cart has items */
+.cart-layout:not(:has(.empty-state)) {
+    grid-template-columns: 2fr 1fr; /* Restore 2-column view when items are present */
+    min-height: 0;
+}
+.cart-item-card {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+.cart-item-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+.cart-item-details {
+    flex-grow: 1;
+}
+.cart-item-details h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+}
+.cart-item-price {
+    color: #6B6B6B;
+    margin: 0;
+}
+.quantity-selector {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+.quantity-selector button {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border-radius: 50%;
+    line-height: 30px;
+    text-align: center;
+}
+.cart-item-total {
+    text-align: right;
+}
+.cart-item-total p {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+.cart-item-total .remove-btn {
+    font-size: 0.8rem;
+    padding: 4px 8px;
+    background: none;
+    color: var(--danger-color);
+    border: none;
+}
+.order-summary {
+    background-color: var(--soft-lavender);
+    border-radius: 12px;
+    padding: 1.5rem;
+    position: sticky; /* Keeps it in view while scrolling */
+    top: 100px;
+    border: 1px solid var(--border-color);
+}
+.order-summary h2 {
+    text-align: left;
+    margin-top: 0;
+}
+.summary-line, .summary-total {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+.summary-total {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+.order-summary hr {
+    border: 0;
+    border-top: 1px solid var(--border-color);
+    margin: 1rem 0;
+}
+.order-summary .checkout-btn {
+    width: 100%;
+}
+
+/* --- NEW ORDER HISTORY PAGE STYLES --- */
+.order-card {
+    background: var(--light-color);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Softer shadow */
+}
+
+.order-card-header {
+    display: grid; /* Use grid for flexible header layout */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive columns */
+    gap: 1rem;
+    background-color: var(--secondary-color);
+    padding: 1rem 1.5rem;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    color: var(--grey-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.header-section {
+    display: flex;
+    flex-direction: column;
+}
+.header-section span:first-child {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+}
+.header-section span:last-child {
+    font-weight: 500;
+    color: var(--dark-color);
+}
+.ship-to-address {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Add ... if address is too long */
+}
+.header-order-id {
+    text-align: right; /* Align order ID and track button to the right */
+}
+.header-order-id .nav-button {
+    padding: 5px 10px; /* Smaller track button */
+    font-size: 0.8rem;
+    margin-top: 5px;
+    display: inline-block;
+    width: auto;
+}
+
+.order-card-body {
+    padding: 1.5rem;
+}
+
+.order-status {
+    font-size: 1.3rem; /* Slightly smaller status */
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+/* Re-add status color styles if they were removed */
+.status-order-placed { color: #007bff; }
+.status-shipped { color: #fd7e14; }
+.status-out-for-delivery { color: #17a2b8; }
+.status-delivered { color: var(--success-color); }
+.status-cancelled { color: var(--danger-color); }
+
+.order-items-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.order-product-item {
+    display: grid; /* Use grid for item layout */
+    grid-template-columns: 80px 1fr auto; /* Image | Details | Button */
+    align-items: center;
+    gap: 1rem;
+}
+
+.order-item-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.order-item-details {
+    line-height: 1.4;
+}
+.order-item-details a {
+    font-weight: 600; /* Bolder product name */
+    color: var(--dark-color);
+}
+.order-item-details span {
+    display: block;
+    color: var(--grey-color);
+    font-size: 0.85rem;
+}
+
+/* Style the 'Write a review' button */
+.write-review-btn {
+    width: auto;
+    white-space: nowrap;
+    text-decoration: none;
+    padding: 8px 15px;
+    font-size: 0.85rem;
+    background-color: var(--light-color); /* Light background */
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+.write-review-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+}
+
+/* --- HOMEPAGE DETAIL SECTIONS --- */
+.homepage-section {
+    margin-top: 5rem;
+    padding-top: 1rem;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+    font-weight: 700;
+}
+
+/* Featured Products Grid */
+.featured-products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.featured-card {
+    display: block;
+    text-align: left;
+    padding: 1.5rem;
+    background: var(--light-color);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.featured-card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+}
+
+.featured-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.featured-card h3 {
+    font-size: 1.25rem;
+    margin: 0.5rem 0;
+    color: var(--dark-color);
+}
+.featured-card p {
+    color: var(--grey-color);
+    font-size: 0.95rem;
+}
+
+/* Value Proposition Section */
+.value-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    text-align: center;
+    background: var(--primary-color); /* Use your primary color for impact */
+    color: var(--light-color);
+    margin-top: 5rem;
+    margin-bottom: 0; /* Align with bottom of screen */
+}
+
+.value-item i {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--accent-gold); /* A highlight color */
+}
+
+.value-item h3 {
+    color: var(--light-color);
+    margin: 0 0 0.5rem 0;
+}
+.value-item p {
+    color: #f0f0f0;
+}
+
+/* Styling for Sort/Filter Controls */
+.controls-bar {
+    display: flex;
+    justify-content: space-between; /* Space out filter and sort */
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping */
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.filter-group label {
+    font-weight: 500;
+    color: var(--dark-color);
+    margin-right: 0.5rem;
+}
+
+.controls-bar select {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--light-color);
+}
+
+/* ========================================================================
+   CHECKOUT PAGE STYLES - PROFESSIONAL LAYOUT
+   ======================================================================== */
+
+
+
+
+.checkout-details-panel h2 {
+    text-align: left;
+    font-size: 1.5rem;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Address/Payment Option Styles */
+.address-option, .payment-option {
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Vertically center the radio and text */
+    gap: 10px; /* Add space between radio and text */
+    border: 1px solid var(--border-color);
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+.address-option:hover, .payment-option:hover {
+    border-color: var(--primary-color);
+}
+.address-option input[type="radio"], .payment-option input[type="radio"] {
+    margin-right: 0;
+    width: auto; /* Override 100% width */
+}
+
+/* Summary Box Styles - Professional Table Layout */
+
+
+.summary-box h2 {
+    text-align: left;
+    margin-top: 0;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+/* Order Items Section */
+.summary-items-section {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.summary-items-section h3 {
+    font-size: 0.95rem;
+    color: var(--dark-color);
+    margin-bottom: 1rem;
+    font-weight: 600;
+    text-align: left;
+}
+
+/* Individual Item Lines */
+.summary-item-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+    color: #666;
+    gap: 1rem; /* Ensures proper spacing */
+}
+
+.summary-item-line .item-name {
+    flex: 1; /* Takes up available space */
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.summary-item-line .item-quantity {
+    color: #888;
+    font-size: 0.85rem;
+    min-width: 40px;
+    text-align: center;
+}
+
+.summary-item-line .item-price {
+    font-weight: 500;
+    color: var(--dark-color);
+    min-width: 80px;
+    text-align: right;
+}
+
+/* Price Breakdown Section */
+.summary-calculations {
+    margin-bottom: 1rem;
+}
+
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+}
+
+.summary-line .label {
+    color: #666;
+    font-weight: 400;
+}
+
+.summary-line .value {
+    font-weight: 500;
+    color: var(--dark-color);
+    text-align: right;
+}
+
+/* Subtotal specific styling */
+.summary-line.subtotal {
+    padding-top: 0.75rem;
+    border-top: 1px dashed #ddd;
+    margin-top: 0.5rem;
+}
+
+/* Tax and Shipping */
+.summary-line.tax .value {
+    color: #666;
+}
+
+.summary-line.shipping .value {
+    color: var(--success-color);
+    font-weight: 600;
+}
+
+/* Final Total Row */
+.final-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--dark-color);
+    padding-top: 1rem;
+    margin-top: 1rem;
+    border-top: 2px solid var(--dark-color);
+}
+
+.final-total .label {
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.final-total .value {
+    color: var(--primary-color);
+}
+
+/* Checkout Button */
+.summary-box button {
+    width: 100%;
+    margin-top: 1.5rem;
+    padding: 14px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* Payment Card Grid */
+
+
+
+
+/* Remove extra margin from inputs inside the grid */
+.payment-card-grid input {
+    margin-bottom: 0;
+}
+
+/* New Address Form Container */
+#new-address-form-container {
+    background-color: var(--secondary-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+#new-address-form-container h3 {
+    font-size: 1.2rem;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    text-align: left;
+    color: var(--dark-color);
+}
+
+/* Address Form Actions */
+.address-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 1rem;
+}
+
+#new-address-form-container button {
+    width: auto;
+    padding: 10px 20px;
+    font-size: 0.95rem;
+    margin-top: 0;
+}
+
+#new-address-form-container #cancel-new-address-btn {
+    background-color: var(--grey-color);
+}
+
+#new-address-form-container #cancel-new-address-btn:hover {
+    background-color: #5a6268;
+}
+
+/* Tracking Page Styles */
+.tracking-id-label {
+    font-size: 1.1rem;
+    color: var(--grey-color);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.tracking-summary {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 2rem;
+    font-weight: 500;
+}
+
+.tracking-status-box {
+    text-align: center;
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    background-color: var(--secondary-color);
+}
+
+.tracking-status-box h2 {
+    font-size: 1.8rem;
+    margin-top: 0;
+}
+
+.status-text {
+    font-weight: 700;
+}
+
+/* Status Color Decoding (Must match the Admin update logic) */
+.status-order-placed { color: #007bff; } /* Blue */
+.status-shipped { color: #fd7e14; } /* Orange */
+.status-out-for-delivery { color: #008080; } /* Teal */
+.status-delivered { color: var(--success-color); } /* Green */
+.status-cancelled { color: var(--danger-color); } /* Red */
+.status-error { color: var(--danger-color); }
+
+.tracking-details-section {
+    margin-top: 3rem;
+    border-top: 2px solid var(--border-color);
+    padding-top: 1rem;
+}
+.tracking-details-section h3 {
+    text-align: left;
+    font-size: 1.2rem;
+}
+.order-items-list {
+    list-style: disc;
+    padding-left: 20px;
+    text-align: left;
+}
+/* --- ADMIN DASHBOARD LAYOUT --- */
+.admin-layout {
+    display: grid;
+    grid-template-columns: 250px 1fr; /* Fixed width sidebar and fluid content */
+    min-height: 90vh;
+    width: 90%;
+    max-width: 1400px; /* Optional: Make the dashboard wider */
+    margin: 2rem auto;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    overflow: hidden; /* Contains children, ensuring round corners */
+}
+
+.admin-sidebar {
+    background-color: var(--dark-color); /* Dark, professional background */
+    color: var(--light-color);
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-header {
+    background-color: var(--primary-color);
+    padding: 1.5rem 1rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+}
+
+.sidebar-menu li {
+    border-bottom: 1px solid #444;
+}
+
+.sidebar-menu a, .sidebar-menu button {
+    display: block;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    color: var(--light-color);
+    text-align: left;
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: background-color 0.2s;
+}
+
+.sidebar-menu a:hover, .sidebar-menu .active, .sidebar-menu button:hover {
+    background-color: #444; /* Lighter hover state */
+    color: var(--light-color);
+}
+.sidebar-menu i {
+    margin-right: 10px;
+}
+
+.admin-main-content {
+    background-color: var(--light-color);
+    padding: 2rem;
+}
+
+.admin-main-content h1 {
+    text-align: left;
+    font-size: 1.8rem;
+    margin-top: 0;
+}
+
+.summary-text {
+    color: var(--grey-color);
+    margin-bottom: 2rem;
+}
+
+/* Styles for Admin Table */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    background-color: var(--white-color);
+    border-radius: 8px;
+    overflow: hidden; /* Important for border-radius on table */
+}
+
+.admin-table th, .admin-table td {
+    border: 1px solid var(--border-color); /* Use the standard border color */
+    padding: 12px;
+    text-align: left;
+    vertical-align: middle; /* Align content vertically in the middle */
+}
+
+.admin-table th {
+    background-color: var(--secondary-color); /* Light grey header background */
+    font-weight: 600;
+}
+
+/* --- COLUMN WIDTHS FOR ALIGNMENT --- */
+/* --- COLUMN WIDTHS FOR ALIGNMENT --- */
+.admin-table th:nth-child(1), .admin-table td:nth-child(1) { width: 5%; text-align: center; } /* ID */
+.admin-table th:nth-child(2), .admin-table td:nth-child(2) { width: 45%; } /* Name (Slightly narrower) */
+.admin-table th:nth-child(3), .admin-table td:nth-child(3) { width: 15%; } /* Price */
+.admin-table th:nth-child(4), .admin-table td:nth-child(4) { width: 10%; text-align: center; } /* Quantity */
+.admin-table th:nth-child(5), .admin-table td:nth-child(5) { width: 25%; text-align: center; } /* Actions */
+
+/* --- BUTTON STYLING FOR ALIGNMENT --- */
+.admin-table td a.edit-btn,
+.admin-table td button.remove-btn {
+    width: auto; /* Allow buttons to size to their content */
+    padding: 8px 12px;
+    margin: 0 5px; /* Add space between Edit and Delete */
+    font-size: 0.9rem;
+    display: inline-block;
+    text-align: center;
+}
+
+/* Styling for Category Filters */
+.category-filters {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+    margin-right: auto; /* Push sort dropdown to the right */
+}
+
+.category-filters span {
+    font-weight: 500;
+    color: var(--dark-color);
+    margin-right: 0.5rem;
+}
+
+.category-btn {
+    width: auto; /* Override default button width */
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    background-color: var(--light-color);
+    color: var(--dark-color);
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.category-btn:hover {
+    background-color: var(--secondary-color);
+}
+
+.category-btn.active {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    border-color: var(--primary-color);
+}
+
+/* Ensure controls bar aligns items nicely */
+.controls-bar {
+    display: flex;
+    justify-content: space-between; /* Space out filter and sort */
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping */
+    gap: 1rem;
+}
+
+/* --- HOMEPAGE - SHOP BY CATEGORY --- */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns for categories */
+    gap: 1.5rem;
+}
+
+.category-card {
+    display: block;
+    position: relative; /* For text overlay */
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+}
+
+.category-card:hover {
+    transform: scale(1.03);
+}
+
+.category-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block; /* Removes bottom space */
+}
+
+.category-card h3 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    color: var(--light-color);
+    padding: 1.5rem 1rem 1rem 1rem;
+    margin: 0;
+    font-size: 1.2rem;
+    box-sizing: border-box;
+}
+
+/* --- FOOTER --- */
+.footer {
+    background-color: var(--dark-color);
+    color: #ccc;
+    padding: 3rem 0 0 0;
+    margin-top: 5rem;
+}
+
+.footer-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding-bottom: 2rem;
+}
+
+.footer-column h3 {
+    color: var(--light-color);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-column a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+    color: var(--primary-color);
+}
+
+.footer-bottom {
+    background-color: #222;
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 0.9rem;
+    margin-top: 2rem;
+}
+
+/* --- Wishlist Page Specific Styles --- */
+.wishlist-card .wishlist-actions {
+    display: flex; /* Place buttons side-by-side */
+    gap: 0.5rem; /* Space between buttons */
+    margin-top: auto; /* Push buttons to the bottom */
+}
+
+.wishlist-card .move-to-cart-btn {
+    flex-grow: 1; /* Make 'Move to Cart' button wider */
+    background-color: var(--success-color);
+}
+.wishlist-card .move-to-cart-btn:hover {
+    background-color: #218838;
+}
+
+.wishlist-card .remove-btn {
+    width: auto; /* Let remove button size naturally */
+    background-color: var(--danger-color);
+    color: var(--light-color); /* Ensure text is white */
+    padding: 12px 15px;
+}
+.wishlist-card .remove-btn:hover {
+    background-color: #c82333;
+}
+
+/* Pagination Controls */
+.pagination-controls {
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Align items vertically */
+    gap: 1rem; /* Space between buttons and text */
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.pagination-controls button {
+    width: auto; /* Buttons size to content */
+    padding: 10px 20px; /* Slightly larger padding */
+    margin: 0; /* Remove default margin */
+    background-color: var(--light-color);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 8px; /* Match other buttons */
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.pagination-controls button:hover:not(:disabled) {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+}
+
+.pagination-controls button:disabled {
+    background-color: #e9ecef;
+    color: #adb5bd;
+    border-color: #dee2e6;
+    cursor: not-allowed;
+    opacity: 0.6; /* Make disabled state clearer */
+}
+
+#page-info {
+    font-weight: 500;
+    color: var(--grey-color);
+    min-width: 100px;
+    text-align: center; /* Ensure text itself is centered */
+}
+
+/* --- ENHANCED PRODUCT DETAIL PAGE STYLES --- */
+
+/* Breadcrumbs */
+.breadcrumb-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 1rem auto;
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+    color: var(--grey-color);
+}
+.breadcrumb-container a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+.breadcrumb-container span {
+    font-weight: 500;
+    color: var(--dark-color);
+}
+
+/* Action Box Enhancements */
+.quantity-select {
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    margin-left: 10px;
+}
+.product-action-box .form-group {
+    text-align: left;
+    margin-bottom: 1.5rem;
+}
+.product-action-box label {
+    font-weight: 500;
+}
+.add-to-wishlist-detail-btn {
+    width: 100%;
+    margin-top: 1rem;
+    background-color: var(--secondary-color);
+    color: var(--dark-color);
+    border: 1px solid var(--border-color);
+}
+.add-to-wishlist-detail-btn:hover {
+    background-color: var(--border-color);
+}
+.add-to-wishlist-detail-btn i {
+    margin-right: 8px;
+    color: var(--danger-color);
+}
+
+/* --- Page Transition Animation (Fade & Slide Up) --- */
+
+/* Apply the animation to the main body */
+body {
+    animation: pageTransition ease-out 0.6s; /* Slightly longer duration */
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    opacity: 0; /* Start invisible */
+}
+
+@keyframes pageTransition {
+    0% {
+        opacity: 0;
+        transform: translateY(20px); /* Start slightly lower */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* End at normal position */
+    }
+}
+
+/* --- Loading Overlay Styles --- */
+.loading-overlay {
+    position: fixed; /* Cover the entire screen */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+    backdrop-filter: blur(3px); /* Blur background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Ensure it's on top */
+    opacity: 0; /* Hidden by default */
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth fade */
+}
+
+/* Class to show the overlay */
+.loading-overlay.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Simple Spinner Animation */
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid var(--secondary-color); /* Light border */
+    border-top-color: var(--primary-color); /* Accent color spinner */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* --- Admin User Table Specific Styles --- */
+.user-table th:nth-child(1), .user-table td:nth-child(1) { width: 5%; }  /* ID */
+.user-table th:nth-child(2), .user-table td:nth-child(2) { width: 25%; } /* Name */
+.user-table th:nth-child(3), .user-table td:nth-child(3) { width: 30%; } /* Email */
+.user-table th:nth-child(4), .user-table td:nth-child(4) { width: 15%; } /* Phone */
+.user-table th:nth-child(5), .user-table td:nth-child(5) { width: 15%; } /* Registered On */
+.user-table th:nth-child(6), .user-table td:nth-child(6) { width: 10%; } /* Role */
+
+/* Stock Status Styling */
+.price-stock {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.stock-in {
+    color: var(--success-color);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+.stock-out {
+    color: var(--danger-color);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+.product-card button:disabled,
+.detail-add-to-cart-btn:disabled,
+.buy-now-btn:disabled {
+    background-color: var(--grey-color);
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+.product-action-box .stock-status { /* For detail page */
+     margin-bottom: 1.5rem;
+}
+
+/* --- Checkout Page Styles (Restored) --- */
+.checkout-grid {
+    display: grid;
+    grid-template-columns: 2fr 1.5fr; /* 2 parts left, 1.5 parts right */
+    gap: 3rem;
+    /* Do NOT add align-items: flex-start here */
+}
+
+.checkout-details-panel {
+    padding-right: 2rem;
+    border-right: 1px solid var(--border-color);
+}
+
+/* --- Credit Card Field Styles --- */
+.payment-card-grid {
+    padding-left: 30px; 
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; 
+}
+.card-half-width {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 1rem; 
+}
+.payment-card-grid input {
+    margin-bottom: 0;
+}
+
+/* --- Order Summary Box (Right Column) --- */
+.summary-box {
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    background-color: var(--secondary-color);
+    position: sticky; /* Makes it stick */
+    top: 100px; /* 100px from the top */
+}
+.summary-box h2 {
+    text-align: left;
+    margin-top: 0;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+.summary-line, .summary-item-line {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--grey-color);
+}
+.final-total {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--dark-color);
+    padding-top: 10px;
+    border-top: 1px dashed var(--border-color);
+    margin-top: 1rem;
+}

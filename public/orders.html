@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Orders</title>
+    <link rel="stylesheet" href="styles.css">
+    </head>
+<body>
+    <nav class="navbar">
+    <div class="nav-container">
+        <a href="index.html" class="nav-logo">MyEcom</a>
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="products.html" class="nav-link">Shop</a></li>
+            <li class="nav-item"><a href="cart.html" class="nav-link">Cart</a></li>
+            <li class="nav-item"><a href="wishlist.html" class="nav-link">Wishlist</a></li>
+            <li class="nav-item"><a href="orders.html" class="nav-link">My Orders</a></li>
+            <li class="nav-item"><button id="logout-btn" class="nav-button">Logout</button></li>
+        </ul>
+    </div>
+</nav>
+    <nav class="navbar">
+        </nav>
+    <div class="container">
+        <h1>Order History</h1>
+        <div id="order-list-container">
+            </div>
+    </div>
+    
+    <script src="orders.js"></script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const userRole = localStorage.getItem('role');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (userRole === 'admin' && navMenu) {
+            const adminLi = document.createElement('li');
+            adminLi.className = 'nav-item';
+            adminLi.innerHTML = `<a href="admin.html" class="nav-link" style="color: var(--danger-color); font-weight: bold;">Admin</a>`;
+            
+            const logoutButton = document.getElementById('logout-btn')?.parentElement;
+            if (logoutButton) {
+                navMenu.insertBefore(adminLi, logoutButton);
+            } else {
+                navMenu.appendChild(adminLi);
+            }
+        }
+
+        // Logout Logic
+        document.getElementById('logout-btn')?.addEventListener('click', () => {
+            localStorage.clear();
+            window.location.href = 'login.html'; // Use absolute path
+        });
+    });
+</script>
+    </body>
+    <footer class="footer">
+    <div class="footer-container">
+        <div class="footer-column">
+            <h3>About MyEcom</h3>
+            <p>Your one-stop shop for the best tech accessories and peripherals.</p>
+        </div>
+        <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="products.html">Shop</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="orders.html">My Orders</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Contact Us</h3>
+            <p>Email: support@myecom.com</p>
+            <p>Phone: +91-123-456-7890</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2025 MyEcom. All Rights Reserved.
+    </div>
+</footer>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Our Products</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">MyEcom</a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="products.html" class="nav-link">Shop</a></li>
+                <li class="nav-item"><a href="cart.html" class="nav-link">Cart</a></li>
+                <li class="nav-item"><a href="wishlist.html" class="nav-link">Wishlist</a></li>
+                <li class="nav-item"><a href="orders.html" class="nav-link">My Orders</a></li>
+                <li class="nav-item"><button id="logout-btn" class="nav-button">Logout</button></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div id="toast-notification" class="toast"></div>
+
+    <div class="shop-container">
+        <h1>Our Products</h1>
+        
+        <div class="controls-bar">
+            <div id="category-filters" class="filter-group category-filters">
+                <span>Filter By:</span>
+                <button class="category-btn active" onclick="loadProductsWithFilters()">All</button>
+                </div>
+            <div class="filter-group">
+                <label for="sort-by">Sort By:</label>
+                <select id="sort-by" onchange="loadProductsWithFilters()">
+                    <option value="default">Default</option>
+                    <option value="mrp_asc">Price: Low to High</option>
+                    <option value="mrp_desc">Price: High to Low</option>
+                    <option value="name_asc">Name: A to Z</option>
+                </select>
+            </div>
+        </div>
+        
+        <div id="product-list" class="product-grid">
+            </div>
+        
+        <div class="pagination-controls" id="pagination-controls">
+            <button id="prev-page-btn" disabled>Previous</button>
+            <span id="page-info">Page 1 of 1</span>
+            <button id="next-page-btn" disabled>Next</button>
+        </div>
+        </div> <script src="products.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const userRole = localStorage.getItem('role');
+            const navMenu = document.querySelector('.nav-menu');
+
+            if (userRole === 'admin' && navMenu) {
+                const adminLi = document.createElement('li');
+                adminLi.className = 'nav-item';
+                adminLi.innerHTML = `<a href="admin.html" class="nav-link" style="color: var(--danger-color); font-weight: bold;">Admin</a>`;
+                
+                const logoutButton = document.getElementById('logout-btn')?.parentElement;
+                if (logoutButton) {
+                    navMenu.insertBefore(adminLi, logoutButton);
+                } else {
+                    navMenu.appendChild(adminLi);
+                }
+            }
+
+            // Logout Logic
+            document.getElementById('logout-btn')?.addEventListener('click', () => {
+                localStorage.clear();
+                window.location.href = 'login.html'; // Use absolute path
+            });
+        });
+    </script>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>About MyEcom</h3>
+                <p>Your one-stop shop for the best tech accessories and peripherals.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="products.html">Shop</a></li>
+                    <li><a href="cart.html">Cart</a></li>
+                    <li><a href="orders.html">My Orders</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <p>Email: support@myecom.com</p>
+                <p>Phone: +91-123-456-7890</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 MyEcom. All Rights Reserved.
+        </div>
+    </footer>
+    
+</body>
+</html>

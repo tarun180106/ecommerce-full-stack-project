@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Manage Users</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar"></nav> <div class="admin-layout">
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">Admin Tools</div>
+            <ul class="sidebar-menu">
+                <li><a href="admin.html"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+                <li><a href="add-product.html"><i class="fas fa-box-open"></i> Add New Product</a></li>
+                <li><a href="admin-orders.html"><i class="fas fa-receipt"></i> Manage Orders</a></li>
+                <li><a href="admin-users.html" class="active"><i class="fas fa-users"></i> Manage Users</a></li> <hr>
+                
+                <li><button id="admin-logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</button></li>
+            </ul>
+        </aside>
+
+        <main class="admin-main-content">
+            <h1>Manage Users</h1>
+            <p class="summary-text">View all registered customer accounts.</p>
+
+            <table class="admin-table user-table"> <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Registered On</th>
+                        <th>Role</th>
+                        </tr>
+                </thead>
+                <tbody id="admin-user-list">
+                    </tbody>
+            </table>
+        </main>
+    </div>
+
+    <div id="toast-notification" class="toast"></div>
+    <script src="admin-users.js"></script>
+
+    <script>
+        document.getElementById('admin-logout-btn')?.addEventListener('click', () => {
+            localStorage.clear();
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+</html>

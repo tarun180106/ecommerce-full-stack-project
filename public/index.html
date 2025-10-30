@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyEcom - Home</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">MyEcom</a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="products.html" class="nav-link">Shop</a></li>
+                <li class="nav-item"><a href="cart.html" class="nav-link">Cart</a></li>
+                <li class="nav-item"><a href="wishlist.html" class="nav-link">Wishlist</a></li>
+                <li class="nav-item"><a href="orders.html" class="nav-link">My Orders</a></li>
+                <li class="nav-item"><button id="logout-btn" class="nav-button">Logout</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Level Up Your Setup</h1>
+            <p>Discover the latest and greatest in tech accessories.</p>
+            <a href="products.html" class="hero-button">Shop Now</a>
+        </div>
+    </section>
+
+    <section class="container homepage-section">
+    <h2 class="section-title">Editor's Picks: Must-Have Gear</h2>
+    <div class="featured-products-grid">
+        <a href="product-detail.html?id=1" class="featured-card">
+            <img src="images/1.jpg" alt="Wireless Mouse" class="featured-image">
+            <h3>Wireless Mouse</h3>
+            <p>The ultimate blend of speed and ergonomic comfort. **Shop now!**</p>
+        </a>
+        
+        <a href="product-detail.html?id=2" class="featured-card">
+            <img src="images/2.jpg" alt="Mechanical Keyboard" class="featured-image">
+            <h3>Mechanical Keyboard</h3>
+            <p>Tactile satisfaction and custom RGB lighting for serious productivity.</p>
+        </a>
+        
+        <a href="product-detail.html?id=5" class="featured-card">
+            <img src="images/5.jpg" alt="Gaming Monitor" class="featured-image">
+            <h3>Gaming Monitor</h3>
+            <p>Ultra-fast refresh rate and stunning clarity for true gaming immersion.</p>
+        </a>
+    </div>
+</section>
+
+<section class="container value-section">
+    <div class="value-item">
+        <i class="fas fa-shipping-fast"></i>
+        <h3>Fast & Free Shipping</h3>
+        <p>Get your gear delivered in 3-5 business days across the country.</p>
+    </div>
+    <div class="value-item">
+        <i class="fas fa-shield-alt"></i>
+        <h3>Secure Checkout</h3>
+        <p>Your payment information is protected by industry-leading encryption.</p>
+    </div>
+    <div class="value-item">
+        <i class="fas fa-star-half-alt"></i>
+        <h3>Customer Reviewed</h3>
+        <p>See genuine ratings and reviews before you buy anything.</p>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-column">
+            <h3>About MyEcom</h3>
+            <p>Your one-stop shop for the best tech accessories and peripherals.</p>
+        </div>
+        <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="products.html">Shop</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="orders.html">My Orders</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Contact Us</h3>
+            <p>Email: support@myecom.com</p>
+            <p>Phone: +91-123-456-7890</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2025 MyEcom. All Rights Reserved.
+    </div>
+</footer>
+    
+    <script>
+        // Simple logout script for the nav button
+        document.getElementById('logout-btn')?.addEventListener('click', () => {
+            localStorage.clear();
+            window.location.href = 'login.html';
+        });
+    </script>
+        <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const userRole = localStorage.getItem('role');
+            const navMenu = document.querySelector('.nav-menu');
+
+            if (userRole === 'admin' && navMenu) {
+                const adminLi = document.createElement('li');
+                adminLi.className = 'nav-item';
+                adminLi.innerHTML = `<a href="admin.html" class="nav-link" style="color: var(--danger-color); font-weight: bold;">Admin</a>`;
+                
+                // Add it before the logout button
+                const logoutButton = document.getElementById('logout-btn')?.parentElement;
+                if (logoutButton) {
+                    navMenu.insertBefore(adminLi, logoutButton);
+                } else {
+                    navMenu.appendChild(adminLi);
+                }
+            }
+
+            // Your existing logout button script
+            document.getElementById('logout-btn')?.addEventListener('click', () => {
+                localStorage.clear();
+                window.location.href = 'login.html';
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const overlay = document.getElementById('loading-overlay');
+            // Select all internal links (don't show for external links or # links)
+            const internalLinks = document.querySelectorAll('a[href^="/"], a[href^="./"], a[href^="../"], a:not([href^="#"]):not([target="_blank"])'); 
+
+            internalLinks.forEach(link => {
+                link.addEventListener('click', (event) => {
+                    const href = link.getAttribute('href');
+                    // Check if it's a valid navigation link
+                    if (href && href !== '#' && !href.startsWith('javascript:')) { 
+                        if (overlay) {
+                            overlay.classList.add('visible'); // Show the loading overlay
+                        }
+                    }
+                });
+            });
+
+            // Hide overlay if user navigates back/forward using browser buttons
+            window.addEventListener('pageshow', (event) => {
+                 if (overlay && event.persisted) { // event.persisted detects back/forward navigation
+                     overlay.classList.remove('visible');
+                 }
+            });
+        });
+    </script>
+</body>
+</html>

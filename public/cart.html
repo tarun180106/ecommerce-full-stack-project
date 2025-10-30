@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Shopping Cart</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">MyEcom</a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="products.html" class="nav-link">Shop</a></li>
+                <li class="nav-item"><a href="cart.html" class="nav-link">Cart</a></li>
+                <li class="nav-item"><a href="wishlist.html" class="nav-link">Wishlist</a></li>
+                <li class="nav-item"><a href="orders.html" class="nav-link">My Orders</a></li>
+                <li class="nav-item"><button id="logout-btn" class="nav-button">Logout</button></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Your Shopping Cart</h1>
+        
+        <div class="cart-layout">
+            <div id="cart-items-container">
+                </div>
+
+            <div id="order-summary-container">
+                </div>
+        </div>
+    </div>
+    
+    <div id="toast-notification" class="toast"></div>
+    <script src="cart.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const userRole = localStorage.getItem('role');
+            const navMenu = document.querySelector('.nav-menu');
+
+            if (userRole === 'admin' && navMenu) {
+                const adminLi = document.createElement('li');
+                adminLi.className = 'nav-item';
+                // Note: Using the leading slash / on admin.html is the correct path
+                adminLi.innerHTML = `<a href="admin.html" class="nav-link" style="color: var(--danger-color); font-weight: bold;">Admin</a>`;
+                
+                const logoutButton = document.getElementById('logout-btn')?.parentElement;
+                if (logoutButton) {
+                    navMenu.insertBefore(adminLi, logoutButton);
+                } else {
+                    navMenu.appendChild(adminLi);
+                }
+            }
+
+            // Logout Logic
+            document.getElementById('logout-btn')?.addEventListener('click', () => {
+                localStorage.clear();
+                window.location.href = 'login.html';
+            });
+        });
+    </script>
+</body>
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-column">
+            <h3>About MyEcom</h3>
+            <p>Your one-stop shop for the best tech accessories and peripherals.</p>
+        </div>
+        <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="products.html">Shop</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="orders.html">My Orders</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Contact Us</h3>
+            <p>Email: support@myecom.com</p>
+            <p>Phone: +91-123-456-7890</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2025 MyEcom. All Rights Reserved.
+    </div>
+</footer>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Product</title>
+    <link rel="stylesheet" href="styles.css">
+    </head>
+<body>
+    <nav class="navbar">
+        </nav>
+    <div class="container">
+        <h1>Add New Product</h1>
+        <form id="add-product-form">
+            <div class="form-group">
+                <label for="name">Product Name</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Short Description</label>
+                <input type="text" id="description">
+            </div>
+             <div class="form-group">
+                <label for="detailed_description">Detailed Description</label>
+                <textarea id="detailed_description" rows="5"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="mrp">Price (MRP)</label>
+                <input type="number" id="mrp" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="image_url">Image URL</label>
+                <input type="text" id="image_url" placeholder="/images/example.jpg">
+            </div>
+             <div class="form-group">
+                <label for="seller_id">Seller ID</label>
+                <input type="number" id="seller_id" value="1" required>
+            </div>
+            <div class="form-group">
+                <label for="quantity">Stock Quantity</label>
+                <input type="number" id="quantity" min="0" value="10" required> 
+            </div>
+            <button type="submit">Add Product</button>
+        </form>
+    </div>
+    <script src="add-product.js"></script>
+    
+</body>
+</html>
